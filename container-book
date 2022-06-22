@@ -1,0 +1,26 @@
+--- #docker container creation playbook
+
+- hosts: dockerhost
+  become: true
+  user: ansadmin
+
+  tasks:
+
+    - name: install pip
+      package:
+         name: "python3-pip"
+         state: present
+         update_cache: true
+
+           # - name: install docker sdk
+           #ns package:
+           #name: "docker"
+
+    - name: create docker container
+      # shell: "docker container run  -itd --name gurudev -p 9000:80 /dockdchaos/dockerproject01/"
+      docker_container:
+          image: dockdchaos/dockerproject01
+          name: gurudev
+          state: started
+          ports:
+            - "9000:80"
