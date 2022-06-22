@@ -1,5 +1,6 @@
 FROM centos:latest
 MAINTAINER gurudev59
+RUN yum -y update && yum clean all
 RUN yum install httpd\
 zip\
 unzip
