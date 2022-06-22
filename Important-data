@@ -9,7 +9,8 @@ docker push dockdchaos/$JOB_NAME:v1.$BUILD_ID
 docker push dockdchaos/$JOB_NAME:latest
 docker rmi $JOB_NAME:v1.$BUILD_ID dockdchaos/$JOB_NAME:v1.$BUILD_ID dockdchaos/$JOB_NAME:latest
 
-
+#copy files from jenkins to ansible 
+rsync -avh /var/lib/jenkins/workspace/dockerproject01/* ansadmin@172.31.11.151:/opt/project01/
 
 #install docker on ansible
 #install docker and python on dockerhost 
