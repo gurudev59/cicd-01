@@ -1,0 +1,27 @@
+
+#command to build image, tagging image wrt dockerhub and then push the image to dockerhub. Finally to remove builds from local
+
+cd /opt/project01/
+docker build -t $JOB_NAME:v1.$BUILD_ID .
+docker tag $JOB_NAME:v1.$BUILD_ID dockdchaos/$JOB_NAME:v1.$BUILD_ID
+docker tag $JOB_NAME:v1.$BUILD_ID dockdchaos/$JOB_NAME:latest 
+docker push dockdchaos/$JOB_NAME:v1.$BUILD_ID
+docker push dockdchaos/$JOB_NAME:latest
+docker rmi $JOB_NAME:v1.$BUILD_ID dockdchaos/$JOB_NAME:v1.$BUILD_ID dockdchaos/$JOB_NAME:latest
+
+
+
+#install docker on ansible
+#install docker and python on dockerhost 
+sudo yum install pip* -y
+sudo pip install docker-py
+
+sudo chown -R /var/run/docker.sock
+sudo chmod 777 /var/run/docker.sock
+
+#chown and chmod permission to ansible playbook files and also files which are going to copy from jenkins
+
+#free websites to use for pipeline
+
+https://www.free-css.com/assets/files/free-css-templates/download/page259/digitco.zip
+		https://www.free-css.com/assets/files/free-css-templates/download/page276/jon.zip
