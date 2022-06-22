@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM centos:7
 MAINTAINER gurudev59
 RUN yum -y update && yum clean all
 RUN yum install httpd\
